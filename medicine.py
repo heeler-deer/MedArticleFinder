@@ -14,14 +14,14 @@ import logging
 import colorlog
 
 
-# 创建一个colorlog日志记录器
+
 logger = colorlog.getLogger()
 logger.setLevel(logging.DEBUG)
 
-# 创建一个控制台处理程序，并设置颜色格式化程序
+
 console_handler = colorlog.StreamHandler()
 formatter = colorlog.ColoredFormatter(
-    "%(log_color)s%(levelname)-8s%(reset)s %(blue)s%(message)s",
+    "%(log_color)s%(levelname)-8s%(reset)s %(log_color)s%(message)s",
     datefmt=None,
     reset=True,
     log_colors={
@@ -36,15 +36,15 @@ formatter = colorlog.ColoredFormatter(
 )
 console_handler.setFormatter(formatter)
 
-# 创建一个文件处理程序，将日志写入文件
+
 file_handler = logging.FileHandler('medicine.log', mode='w')
 file_formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
 file_handler.setFormatter(file_formatter)
 
-# 将控制台处理程序和文件处理程序添加到日志记录器
+
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
-# 文章信息
+
 article_info_list = []
 
 
@@ -94,11 +94,11 @@ class ArticleInfo:
 
 
 def get_IF_from_name(name):
-    # 从期刊名查询impact factor
+    
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.22 Safari/537.36 SE 2.X MetaSr 1.0"
     }
-    name.replace(" ", "+")  # 在网址查询时把空格转为+号
+    name.replace(" ", "+")  
     address = (
         "http://sci.justscience.cn/list?q="
         + str(name)
@@ -106,18 +106,18 @@ def get_IF_from_name(name):
         + "&research_area=&If_range_min=&If_range_max=&jcr_quartile=0&oa=2&Self_cites_ratio_min=&Self_cites_ratio_max=&mainclass=0&subclass=0&pub_country=&not_pub_country=&sci_type=2&pub_frequency=7&adv=1"
     )
     logger.info(address)
-    f = requests.get(address, headers=headers, timeout=(3, 7))  # 加timeout防掉线
+    f = requests.get(address, headers=headers, timeout=(3, 7))  
 
     parsed_html = html.fromstring(f.content)
 
-    #    使用XPath来定位目标元素
+    
     tr_elements = parsed_html.xpath(
         "/html/body/div[1]/div[1]/div[2]/div[2]/table/tbody/tr"
     )
 
     for tr in tr_elements:
         logger.info("::::::::::::::::::::::::::")
-        # 使用XPath定位当前<tr>元素下的第一个<td>元素的文本内容
+        
         row_data = tr.xpath("td[1]/a/text()")
         row_data2 = tr.xpath("td[2]/text()")
         row_data = str(row_data[0])
@@ -150,7 +150,7 @@ def get_article_by_keyword(key, key2):
         logger.info(address)
         f = requests.get(address, headers=headers, timeout=(3, 7))
         soup = BeautifulSoup(f.text, features="xml")
-        # 提取 Count 元素的内容
+        
         count = soup.find("Count").text
         logger.info("|  Count  |  key1  |  key2  |  key3  |")
         logger.info(
@@ -174,7 +174,7 @@ def get_article_by_keyword(key, key2):
                 + str(key3)
             )
             return ["error"]
-        # 提取 IdList 中的 Id 元素内容
+        
         id_list = soup.find_all("Id")
         for id_element in id_list:
             logger.info("Id:"+ id_element.text)
@@ -292,7 +292,7 @@ def get_details_by_pmid(pmid_list, key, key2):
 
         article_info_list.append(article_info)
     
-    # 创建一个包含文章信息的DataFrame
+    
     data = []
     for article_info in article_info_list:
 
@@ -343,10 +343,10 @@ def get_details_by_pmid(pmid_list, key, key2):
             "Matching Key Words",
         ],
     )
-    # 指定要保存CSV文件的文件名
+    
     csv_filename = "article_info.csv"
 
-    # 将DataFrame保存为CSV文件
+    
     df.to_csv(csv_filename, index=False)
     logger.info("*******************Success*****************")
     return
@@ -382,13 +382,10 @@ def get_abstract_keywords_by_pmid(pmid):
         keywords = ""
     else:
         logger.info(keyword_list)
-        #   创建一个空列表来存储关键字
-
-        # 遍历所有的Keyword元素
         for keyword in keyword_list.find_all("Keyword"):
-            # 获取关键字的文本内容
+            
             keyword_text = keyword.text
-            # 将关键字文本添加到关键字列表中
+            
             keywords.append(keyword_text)
 
     keywords_string = ",".join(keywords)
@@ -418,7 +415,7 @@ def get_hindex_by_author(name):
         return hindex
 
 
-# get_abstract_keywords_by_pmid(34575891)
+
 def main():
     key_list = ["inflammation"]
     key_second_list = ["shampoo"]

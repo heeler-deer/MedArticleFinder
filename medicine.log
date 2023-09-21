@@ -1,157 +1,163 @@
-2023-09-21 15:10:30,393 [INFO] ************Getting pmid of article*****************
-2023-09-21 15:10:30,393 [INFO] https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmax=20&term=%5bjournal%5d+AND+inflammation+shampoo+AND+2013
-2023-09-21 15:10:30,394 [DEBUG] Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
-2023-09-21 15:10:31,569 [DEBUG] https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pubmed&retmax=20&term=%5Bjournal%5D+AND+inflammation+shampoo+AND+2013 HTTP/1.1" 200 None
-2023-09-21 15:10:31,571 [INFO] |  Count  |  key1  |  key2  |  key3  |
-2023-09-21 15:10:31,571 [INFO] |  2  |  inflammation  |  shampoo  |  2013  |
-2023-09-21 15:10:31,571 [INFO] Id:26016669
-2023-09-21 15:10:31,571 [INFO] Id:24039409
-2023-09-21 15:10:31,571 [INFO] ['26016669', '24039409']
-2023-09-21 15:10:33,073 [INFO] ************Getting details by pmid******************
-2023-09-21 15:10:33,074 [INFO] https://icite.od.nih.gov/api/pubs?pmids=26016669,24039409&fl=pmid,year,title,authors,journal,relative_citation_ratio,nih_percentile,citation_count,field_citation_rate,doi
-2023-09-21 15:10:33,075 [DEBUG] Starting new HTTPS connection (1): icite.od.nih.gov:443
-2023-09-21 15:10:33,983 [DEBUG] https://icite.od.nih.gov:443 "GET /api/pubs?pmids=26016669,24039409&fl=pmid,year,title,authors,journal,relative_citation_ratio,nih_percentile,citation_count,field_citation_rate,doi HTTP/1.1" 200 1462
-2023-09-21 15:10:33,984 [INFO] PMID:24039409
-2023-09-21 15:10:33,984 [INFO] Year:2013
-2023-09-21 15:10:33,984 [INFO] Title:A randomized, double-masked study to evaluate the effect of omega-3 fatty acids supplementation in meibomian gland dysfunction.
-2023-09-21 15:10:33,985 [INFO] Authors:Andrea Oleñik, Ignacio Jiménez-Alfaro, Nicolás Alejandre-Alba, Ignacio Mahillo-Fernández
-2023-09-21 15:10:33,985 [INFO] Journal:Clin Interv Aging
-2023-09-21 15:10:33,985 [INFO] Relative Citation Ratio:3.7
-2023-09-21 15:10:33,985 [INFO] NIH Percentile:89.1
-2023-09-21 15:10:33,985 [INFO] Citation Count:66
-2023-09-21 15:10:33,985 [INFO] Field Citation Rate:3.036807125247127
-2023-09-21 15:10:33,985 [INFO] DOI:10.2147/CIA.S48955
-2023-09-21 15:10:33,985 [INFO] http://sci.justscience.cn/list?q=Clin Interv Aging&sci=1&research_area=&If_range_min=&If_range_max=&jcr_quartile=0&oa=2&Self_cites_ratio_min=&Self_cites_ratio_max=&mainclass=0&subclass=0&pub_country=&not_pub_country=&sci_type=2&pub_frequency=7&adv=1
-2023-09-21 15:10:33,986 [DEBUG] Starting new HTTP connection (1): sci.justscience.cn:80
-2023-09-21 15:10:34,243 [DEBUG] http://sci.justscience.cn:80 "GET /list?q=Clin%20Interv%20Aging&sci=1&research_area=&If_range_min=&If_range_max=&jcr_quartile=0&oa=2&Self_cites_ratio_min=&Self_cites_ratio_max=&mainclass=0&subclass=0&pub_country=&not_pub_country=&sci_type=2&pub_frequency=7&adv=1 HTTP/1.1" 200 None
-2023-09-21 15:10:34,245 [INFO] ::::::::::::::::::::::::::
-2023-09-21 15:10:34,245 [INFO] CLINICAL INTERVENTIONS IN AGING
-2023-09-21 15:10:34,245 [INFO] CLIN INTERV AGING
-2023-09-21 15:10:35,247 [INFO] 3.5999
-2023-09-21 15:10:35,247 [INFO] Impact Factor:3.5999
-2023-09-21 15:10:35,248 [INFO] *********Getting abstract and keywords********
-2023-09-21 15:10:35,248 [INFO] https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=24039409&retmode=XML
-2023-09-21 15:10:35,249 [DEBUG] Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
-2023-09-21 15:10:36,324 [DEBUG] https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/efetch.fcgi?db=pubmed&id=24039409&retmode=XML HTTP/1.1" 200 None
-2023-09-21 15:10:36,533 [INFO] Dysfunction of the meibomian gland (MG) is among the most frequent causes of ophthalmological symptoms. The inflammation seen in meibomian gland dysfunction (MGD) is part of its pathogenesis, and evidence of the antioxidant-inflammatory properties of omega-3 fatty acids suggests this to be an appropriate treatment for MGD.
-2023-09-21 15:10:36,534 [INFO] <KeywordList Owner="NOTNLM"><Keyword MajorTopicYN="N">blepharitis</Keyword><Keyword MajorTopicYN="N">dry eye</Keyword><Keyword MajorTopicYN="N">eye discomfort</Keyword><Keyword MajorTopicYN="N">ocular inflammation</Keyword><Keyword MajorTopicYN="N">surface disease</Keyword></KeywordList>
-2023-09-21 15:10:36,534 [INFO] blepharitis,dry eye,eye discomfort,ocular inflammation,surface disease
-2023-09-21 15:10:36,534 [INFO] inflammation
-2023-09-21 15:10:36,534 [INFO] reason
-2023-09-21 15:10:36,534 [INFO] Andrea Oleñik
-2023-09-21 15:10:36,534 [INFO] **************Getting hindex by author*****************
-2023-09-21 15:10:36,535 [INFO] Getting https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Andrea%20Ole%C3%B1ik
-2023-09-21 15:10:38,245 [DEBUG] connect_tcp.started host='scholar.google.com' port=443 local_address=None timeout=5 socket_options=None
-2023-09-21 15:10:38,247 [DEBUG] connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f982ca1e800>
-2023-09-21 15:10:38,247 [DEBUG] start_tls.started ssl_context=<ssl.SSLContext object at 0x7f9829156240> server_hostname='scholar.google.com' timeout=5
-2023-09-21 15:10:38,402 [DEBUG] start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f982ca1fcd0>
-2023-09-21 15:10:38,402 [DEBUG] send_request_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:38,402 [DEBUG] send_request_headers.complete
-2023-09-21 15:10:38,402 [DEBUG] send_request_body.started request=<Request [b'GET']>
-2023-09-21 15:10:38,403 [DEBUG] send_request_body.complete
-2023-09-21 15:10:38,403 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:39,683 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:10:39 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'Set-Cookie', b'NID=511=bwLVO4exLldlFc5SXZNd0CXPB4y1corTBHAN-2_8YuVZi4_x4m6UyOfCsfAyZt0_s-KWGKM03GzGDQ9nj6zXKXyNxMB8QjUPjiSFi9_mei0aFla-iR22Xl_QaVEa6b_rvjYjgM08XlFNBrfPA1u7xMnaL9FhrabxtFSgp3hDcJ0; expires=Fri, 22-Mar-2024 07:10:39 GMT; path=/; domain=.google.com; Secure; HttpOnly; SameSite=none'), (b'P3P', b'CP="This is not a P3P policy! See g.co/p3phelp for more info."'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
-2023-09-21 15:10:39,684 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Andrea%20Ole%C3%B1ik "HTTP/1.1 200 OK"
-2023-09-21 15:10:39,684 [DEBUG] receive_response_body.started request=<Request [b'GET']>
-2023-09-21 15:10:39,781 [DEBUG] receive_response_body.complete
-2023-09-21 15:10:39,782 [DEBUG] response_closed.started
-2023-09-21 15:10:39,782 [DEBUG] response_closed.complete
-2023-09-21 15:10:39,782 [DEBUG] Session proxy config is {}
-2023-09-21 15:10:39,787 [INFO] Found 1 authors
-2023-09-21 15:10:39,788 [INFO] Getting https://scholar.google.com/citations?hl=en&user=GHNufb0AAAAJ&pagesize=100
-2023-09-21 15:10:40,868 [DEBUG] send_request_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:40,869 [DEBUG] send_request_headers.complete
-2023-09-21 15:10:40,869 [DEBUG] send_request_body.started request=<Request [b'GET']>
-2023-09-21 15:10:40,869 [DEBUG] send_request_body.complete
-2023-09-21 15:10:40,869 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:41,177 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:10:40 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
-2023-09-21 15:10:41,178 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&user=GHNufb0AAAAJ&pagesize=100 "HTTP/1.1 200 OK"
-2023-09-21 15:10:41,178 [DEBUG] receive_response_body.started request=<Request [b'GET']>
-2023-09-21 15:10:41,373 [DEBUG] receive_response_body.complete
-2023-09-21 15:10:41,374 [DEBUG] response_closed.started
-2023-09-21 15:10:41,374 [DEBUG] response_closed.complete
-2023-09-21 15:10:41,374 [DEBUG] Session proxy config is {}
-2023-09-21 15:10:41,388 [INFO] Getting https://scholar.google.com/citations?hl=en&user=GHNufb0AAAAJ&pagesize=100
-2023-09-21 15:10:42,665 [DEBUG] send_request_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:42,666 [DEBUG] send_request_headers.complete
-2023-09-21 15:10:42,666 [DEBUG] send_request_body.started request=<Request [b'GET']>
-2023-09-21 15:10:42,666 [DEBUG] send_request_body.complete
-2023-09-21 15:10:42,666 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:42,968 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:10:42 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
-2023-09-21 15:10:42,968 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&user=GHNufb0AAAAJ&pagesize=100 "HTTP/1.1 200 OK"
-2023-09-21 15:10:42,969 [DEBUG] receive_response_body.started request=<Request [b'GET']>
-2023-09-21 15:10:43,165 [DEBUG] receive_response_body.complete
-2023-09-21 15:10:43,165 [DEBUG] response_closed.started
-2023-09-21 15:10:43,165 [DEBUG] response_closed.complete
-2023-09-21 15:10:43,165 [DEBUG] Session proxy config is {}
-2023-09-21 15:10:43,179 [INFO] 7
-2023-09-21 15:10:45,181 [INFO] 7
-2023-09-21 15:10:45,182 [INFO] https://sci-hub.se/10.2147/CIA.S48955
-2023-09-21 15:10:45,182 [INFO] PMID:26016669
-2023-09-21 15:10:45,182 [INFO] Year:2015
-2023-09-21 15:10:45,182 [INFO] Title:Seborrhoeic dermatitis of the scalp.
-2023-09-21 15:10:45,183 [INFO] Authors:Luigi Naldi, Janouk Diphoorn
-2023-09-21 15:10:45,183 [INFO] Journal:BMJ Clin Evid
-2023-09-21 15:10:45,183 [INFO] Relative Citation Ratio:0.57
-2023-09-21 15:10:45,183 [INFO] NIH Percentile:30.9
-2023-09-21 15:10:45,183 [INFO] Citation Count:10
-2023-09-21 15:10:45,183 [INFO] Field Citation Rate:4.041894482799871
-2023-09-21 15:10:45,183 [INFO] DOI:
-2023-09-21 15:10:45,183 [INFO] http://sci.justscience.cn/list?q=BMJ Clin Evid&sci=1&research_area=&If_range_min=&If_range_max=&jcr_quartile=0&oa=2&Self_cites_ratio_min=&Self_cites_ratio_max=&mainclass=0&subclass=0&pub_country=&not_pub_country=&sci_type=2&pub_frequency=7&adv=1
-2023-09-21 15:10:45,184 [DEBUG] Starting new HTTP connection (1): sci.justscience.cn:80
-2023-09-21 15:10:45,397 [DEBUG] http://sci.justscience.cn:80 "GET /list?q=BMJ%20Clin%20Evid&sci=1&research_area=&If_range_min=&If_range_max=&jcr_quartile=0&oa=2&Self_cites_ratio_min=&Self_cites_ratio_max=&mainclass=0&subclass=0&pub_country=&not_pub_country=&sci_type=2&pub_frequency=7&adv=1 HTTP/1.1" 200 None
-2023-09-21 15:10:45,399 [INFO] Impact Factor:N
-2023-09-21 15:10:45,399 [INFO] *********Getting abstract and keywords********
-2023-09-21 15:10:45,399 [INFO] https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=26016669&retmode=XML
-2023-09-21 15:10:45,400 [DEBUG] Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
-2023-09-21 15:10:46,536 [DEBUG] https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/efetch.fcgi?db=pubmed&id=26016669&retmode=XML HTTP/1.1" 200 None
-2023-09-21 15:10:46,736 [INFO] Seborrhoeic dermatitis affects a variable proportion of the general population, ranging from 3% to 10%. Malassezia yeast species (previously referred to as Pityrosporum) are thought to be the responsible organisms, and cause inflammation by still poorly defined mechanisms. Seborrhoeic dermatitis tends to relapse after treatment.
-2023-09-21 15:10:46,736 [INFO] 
-2023-09-21 15:10:46,736 [INFO] inflammation
-2023-09-21 15:10:46,737 [INFO] reason
-2023-09-21 15:10:46,737 [INFO] Luigi Naldi
-2023-09-21 15:10:46,737 [INFO] **************Getting hindex by author*****************
-2023-09-21 15:10:46,737 [INFO] Getting https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Luigi%20Naldi
-2023-09-21 15:10:47,788 [DEBUG] send_request_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:47,788 [DEBUG] send_request_headers.complete
-2023-09-21 15:10:47,788 [DEBUG] send_request_body.started request=<Request [b'GET']>
-2023-09-21 15:10:47,789 [DEBUG] send_request_body.complete
-2023-09-21 15:10:47,789 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:48,086 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:10:47 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
-2023-09-21 15:10:48,087 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Luigi%20Naldi "HTTP/1.1 200 OK"
-2023-09-21 15:10:48,087 [DEBUG] receive_response_body.started request=<Request [b'GET']>
-2023-09-21 15:10:48,222 [DEBUG] receive_response_body.complete
-2023-09-21 15:10:48,222 [DEBUG] response_closed.started
-2023-09-21 15:10:48,223 [DEBUG] response_closed.complete
-2023-09-21 15:10:48,223 [DEBUG] Session proxy config is {}
-2023-09-21 15:10:48,227 [INFO] Found 1 authors
-2023-09-21 15:10:48,228 [INFO] Getting https://scholar.google.com/citations?hl=en&user=r-8KKnQAAAAJ&pagesize=100
-2023-09-21 15:10:49,526 [DEBUG] send_request_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:49,527 [DEBUG] send_request_headers.complete
-2023-09-21 15:10:49,527 [DEBUG] send_request_body.started request=<Request [b'GET']>
-2023-09-21 15:10:49,527 [DEBUG] send_request_body.complete
-2023-09-21 15:10:49,527 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:49,895 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:10:49 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
-2023-09-21 15:10:49,895 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&user=r-8KKnQAAAAJ&pagesize=100 "HTTP/1.1 200 OK"
-2023-09-21 15:10:49,895 [DEBUG] receive_response_body.started request=<Request [b'GET']>
-2023-09-21 15:10:50,009 [DEBUG] receive_response_body.complete
-2023-09-21 15:10:50,009 [DEBUG] response_closed.started
-2023-09-21 15:10:50,009 [DEBUG] response_closed.complete
-2023-09-21 15:10:50,009 [DEBUG] Session proxy config is {}
-2023-09-21 15:10:50,051 [INFO] Getting https://scholar.google.com/citations?hl=en&user=r-8KKnQAAAAJ&pagesize=100
-2023-09-21 15:10:51,857 [DEBUG] send_request_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:51,857 [DEBUG] send_request_headers.complete
-2023-09-21 15:10:51,858 [DEBUG] send_request_body.started request=<Request [b'GET']>
-2023-09-21 15:10:51,858 [DEBUG] send_request_body.complete
-2023-09-21 15:10:51,858 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
-2023-09-21 15:10:52,178 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:10:51 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
-2023-09-21 15:10:52,178 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&user=r-8KKnQAAAAJ&pagesize=100 "HTTP/1.1 200 OK"
-2023-09-21 15:10:52,178 [DEBUG] receive_response_body.started request=<Request [b'GET']>
-2023-09-21 15:10:52,272 [DEBUG] receive_response_body.complete
-2023-09-21 15:10:52,272 [DEBUG] response_closed.started
-2023-09-21 15:10:52,272 [DEBUG] response_closed.complete
-2023-09-21 15:10:52,272 [DEBUG] Session proxy config is {}
-2023-09-21 15:10:52,312 [INFO] 92
-2023-09-21 15:10:56,316 [INFO] 92
-2023-09-21 15:10:56,316 [INFO] 
-2023-09-21 15:10:56,322 [INFO] *******************Success*****************
+2023-09-21 15:39:06,195 [INFO] ************Getting pmid of article*****************
+2023-09-21 15:39:06,195 [INFO] https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmax=20&term=%5bjournal%5d+AND+inflammation+shampoo+AND+2013
+2023-09-21 15:39:06,196 [DEBUG] Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2023-09-21 15:39:07,341 [DEBUG] https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pubmed&retmax=20&term=%5Bjournal%5D+AND+inflammation+shampoo+AND+2013 HTTP/1.1" 200 None
+2023-09-21 15:39:07,344 [INFO] |  Count  |  key1  |  key2  |  key3  |
+2023-09-21 15:39:07,344 [INFO] |  2  |  inflammation  |  shampoo  |  2013  |
+2023-09-21 15:39:07,344 [INFO] Id:26016669
+2023-09-21 15:39:07,345 [INFO] Id:24039409
+2023-09-21 15:39:07,345 [INFO] ['26016669', '24039409']
+2023-09-21 15:39:08,846 [INFO] ************Getting details by pmid******************
+2023-09-21 15:39:08,847 [INFO] https://icite.od.nih.gov/api/pubs?pmids=26016669,24039409&fl=pmid,year,title,authors,journal,relative_citation_ratio,nih_percentile,citation_count,field_citation_rate,doi
+2023-09-21 15:39:08,848 [DEBUG] Starting new HTTPS connection (1): icite.od.nih.gov:443
+2023-09-21 15:39:10,105 [DEBUG] https://icite.od.nih.gov:443 "GET /api/pubs?pmids=26016669,24039409&fl=pmid,year,title,authors,journal,relative_citation_ratio,nih_percentile,citation_count,field_citation_rate,doi HTTP/1.1" 200 1462
+2023-09-21 15:39:10,106 [INFO] PMID:24039409
+2023-09-21 15:39:10,107 [INFO] Year:2013
+2023-09-21 15:39:10,107 [INFO] Title:A randomized, double-masked study to evaluate the effect of omega-3 fatty acids supplementation in meibomian gland dysfunction.
+2023-09-21 15:39:10,107 [INFO] Authors:Andrea Oleñik, Ignacio Jiménez-Alfaro, Nicolás Alejandre-Alba, Ignacio Mahillo-Fernández
+2023-09-21 15:39:10,107 [INFO] Journal:Clin Interv Aging
+2023-09-21 15:39:10,107 [INFO] Relative Citation Ratio:3.7
+2023-09-21 15:39:10,107 [INFO] NIH Percentile:89.1
+2023-09-21 15:39:10,107 [INFO] Citation Count:66
+2023-09-21 15:39:10,107 [INFO] Field Citation Rate:3.036807125247127
+2023-09-21 15:39:10,108 [INFO] DOI:10.2147/CIA.S48955
+2023-09-21 15:39:10,108 [INFO] http://sci.justscience.cn/list?q=Clin Interv Aging&sci=1&research_area=&If_range_min=&If_range_max=&jcr_quartile=0&oa=2&Self_cites_ratio_min=&Self_cites_ratio_max=&mainclass=0&subclass=0&pub_country=&not_pub_country=&sci_type=2&pub_frequency=7&adv=1
+2023-09-21 15:39:10,109 [DEBUG] Starting new HTTP connection (1): sci.justscience.cn:80
+2023-09-21 15:39:10,196 [DEBUG] http://sci.justscience.cn:80 "GET /list?q=Clin%20Interv%20Aging&sci=1&research_area=&If_range_min=&If_range_max=&jcr_quartile=0&oa=2&Self_cites_ratio_min=&Self_cites_ratio_max=&mainclass=0&subclass=0&pub_country=&not_pub_country=&sci_type=2&pub_frequency=7&adv=1 HTTP/1.1" 200 None
+2023-09-21 15:39:10,199 [INFO] ::::::::::::::::::::::::::
+2023-09-21 15:39:10,199 [INFO] CLINICAL INTERVENTIONS IN AGING
+2023-09-21 15:39:10,199 [INFO] CLIN INTERV AGING
+2023-09-21 15:39:11,201 [INFO] 3.5999
+2023-09-21 15:39:11,201 [INFO] Impact Factor:3.5999
+2023-09-21 15:39:11,201 [INFO] *********Getting abstract and keywords********
+2023-09-21 15:39:11,202 [INFO] https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=24039409&retmode=XML
+2023-09-21 15:39:11,203 [DEBUG] Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2023-09-21 15:39:12,292 [DEBUG] https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/efetch.fcgi?db=pubmed&id=24039409&retmode=XML HTTP/1.1" 200 None
+2023-09-21 15:39:12,514 [INFO] Dysfunction of the meibomian gland (MG) is among the most frequent causes of ophthalmological symptoms. The inflammation seen in meibomian gland dysfunction (MGD) is part of its pathogenesis, and evidence of the antioxidant-inflammatory properties of omega-3 fatty acids suggests this to be an appropriate treatment for MGD.
+2023-09-21 15:39:12,514 [INFO] <KeywordList Owner="NOTNLM"><Keyword MajorTopicYN="N">blepharitis</Keyword><Keyword MajorTopicYN="N">dry eye</Keyword><Keyword MajorTopicYN="N">eye discomfort</Keyword><Keyword MajorTopicYN="N">ocular inflammation</Keyword><Keyword MajorTopicYN="N">surface disease</Keyword></KeywordList>
+2023-09-21 15:39:12,515 [INFO] blepharitis,dry eye,eye discomfort,ocular inflammation,surface disease
+2023-09-21 15:39:12,515 [INFO] inflammation
+2023-09-21 15:39:12,515 [INFO] reason
+2023-09-21 15:39:12,515 [INFO] Andrea Oleñik
+2023-09-21 15:39:12,515 [INFO] **************Getting hindex by author*****************
+2023-09-21 15:39:12,516 [INFO] Getting https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Andrea%20Ole%C3%B1ik
+2023-09-21 15:39:14,288 [DEBUG] connect_tcp.started host='scholar.google.com' port=443 local_address=None timeout=5 socket_options=None
+2023-09-21 15:39:14,291 [DEBUG] connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f658e129240>
+2023-09-21 15:39:14,291 [DEBUG] start_tls.started ssl_context=<ssl.SSLContext object at 0x7f658dea2240> server_hostname='scholar.google.com' timeout=5
+2023-09-21 15:39:14,401 [DEBUG] start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f658e129270>
+2023-09-21 15:39:14,401 [DEBUG] send_request_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:14,401 [DEBUG] send_request_headers.complete
+2023-09-21 15:39:14,401 [DEBUG] send_request_body.started request=<Request [b'GET']>
+2023-09-21 15:39:14,402 [DEBUG] send_request_body.complete
+2023-09-21 15:39:14,402 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:15,663 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:39:15 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'Set-Cookie', b'NID=511=IUb4KwcW3LHVgUcGPrq5aZVXYNCwPQfO4OtJJw9ByCGYmbCwWGlbyYl588ZGuiYt575YRWFOlkb-ZzIu2TLdoVZ81LG-FbhKwFOn120RT9RjposMsLJx7Kg2IYputmkk1ooAPCPfqjC3fDmUGbWUMjk2FvOokZH6nU55h_51o-w; expires=Fri, 22-Mar-2024 07:39:15 GMT; path=/; domain=.google.com; Secure; HttpOnly; SameSite=none'), (b'P3P', b'CP="This is not a P3P policy! See g.co/p3phelp for more info."'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2023-09-21 15:39:15,664 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Andrea%20Ole%C3%B1ik "HTTP/1.1 200 OK"
+2023-09-21 15:39:15,664 [DEBUG] receive_response_body.started request=<Request [b'GET']>
+2023-09-21 15:39:15,772 [DEBUG] receive_response_body.complete
+2023-09-21 15:39:15,772 [DEBUG] response_closed.started
+2023-09-21 15:39:15,772 [DEBUG] response_closed.complete
+2023-09-21 15:39:15,773 [DEBUG] Session proxy config is {}
+2023-09-21 15:39:15,779 [INFO] Found 1 authors
+2023-09-21 15:39:15,780 [INFO] Getting https://scholar.google.com/citations?hl=en&user=GHNufb0AAAAJ&pagesize=100
+2023-09-21 15:39:16,882 [DEBUG] send_request_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:16,883 [DEBUG] send_request_headers.complete
+2023-09-21 15:39:16,883 [DEBUG] send_request_body.started request=<Request [b'GET']>
+2023-09-21 15:39:16,883 [DEBUG] send_request_body.complete
+2023-09-21 15:39:16,883 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:17,181 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:39:16 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2023-09-21 15:39:17,182 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&user=GHNufb0AAAAJ&pagesize=100 "HTTP/1.1 200 OK"
+2023-09-21 15:39:17,182 [DEBUG] receive_response_body.started request=<Request [b'GET']>
+2023-09-21 15:39:17,377 [DEBUG] receive_response_body.complete
+2023-09-21 15:39:17,377 [DEBUG] response_closed.started
+2023-09-21 15:39:17,378 [DEBUG] response_closed.complete
+2023-09-21 15:39:17,378 [DEBUG] Session proxy config is {}
+2023-09-21 15:39:17,392 [INFO] Getting https://scholar.google.com/citations?hl=en&user=GHNufb0AAAAJ&pagesize=100
+2023-09-21 15:39:19,003 [DEBUG] send_request_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:19,003 [DEBUG] send_request_headers.complete
+2023-09-21 15:39:19,004 [DEBUG] send_request_body.started request=<Request [b'GET']>
+2023-09-21 15:39:19,004 [DEBUG] send_request_body.complete
+2023-09-21 15:39:19,004 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:19,298 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:39:18 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2023-09-21 15:39:19,299 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&user=GHNufb0AAAAJ&pagesize=100 "HTTP/1.1 200 OK"
+2023-09-21 15:39:19,299 [DEBUG] receive_response_body.started request=<Request [b'GET']>
+2023-09-21 15:39:19,494 [DEBUG] receive_response_body.complete
+2023-09-21 15:39:19,494 [DEBUG] response_closed.started
+2023-09-21 15:39:19,495 [DEBUG] response_closed.complete
+2023-09-21 15:39:19,495 [DEBUG] Session proxy config is {}
+2023-09-21 15:39:19,509 [INFO] 7
+2023-09-21 15:39:22,512 [INFO] 7
+2023-09-21 15:39:22,513 [INFO] https://sci-hub.se/10.2147/CIA.S48955
+2023-09-21 15:39:22,513 [INFO] PMID:26016669
+2023-09-21 15:39:22,513 [INFO] Year:2015
+2023-09-21 15:39:22,514 [INFO] Title:Seborrhoeic dermatitis of the scalp.
+2023-09-21 15:39:22,514 [INFO] Authors:Luigi Naldi, Janouk Diphoorn
+2023-09-21 15:39:22,514 [INFO] Journal:BMJ Clin Evid
+2023-09-21 15:39:22,514 [INFO] Relative Citation Ratio:0.57
+2023-09-21 15:39:22,514 [INFO] NIH Percentile:30.9
+2023-09-21 15:39:22,514 [INFO] Citation Count:10
+2023-09-21 15:39:22,514 [INFO] Field Citation Rate:4.041894482799871
+2023-09-21 15:39:22,514 [INFO] DOI:
+2023-09-21 15:39:22,515 [INFO] http://sci.justscience.cn/list?q=BMJ Clin Evid&sci=1&research_area=&If_range_min=&If_range_max=&jcr_quartile=0&oa=2&Self_cites_ratio_min=&Self_cites_ratio_max=&mainclass=0&subclass=0&pub_country=&not_pub_country=&sci_type=2&pub_frequency=7&adv=1
+2023-09-21 15:39:22,516 [DEBUG] Starting new HTTP connection (1): sci.justscience.cn:80
+2023-09-21 15:39:22,627 [DEBUG] http://sci.justscience.cn:80 "GET /list?q=BMJ%20Clin%20Evid&sci=1&research_area=&If_range_min=&If_range_max=&jcr_quartile=0&oa=2&Self_cites_ratio_min=&Self_cites_ratio_max=&mainclass=0&subclass=0&pub_country=&not_pub_country=&sci_type=2&pub_frequency=7&adv=1 HTTP/1.1" 200 None
+2023-09-21 15:39:22,629 [INFO] Impact Factor:N
+2023-09-21 15:39:22,629 [INFO] *********Getting abstract and keywords********
+2023-09-21 15:39:22,629 [INFO] https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=26016669&retmode=XML
+2023-09-21 15:39:22,630 [DEBUG] Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2023-09-21 15:39:23,734 [DEBUG] https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/efetch.fcgi?db=pubmed&id=26016669&retmode=XML HTTP/1.1" 200 None
+2023-09-21 15:39:23,739 [INFO] Seborrhoeic dermatitis affects a variable proportion of the general population, ranging from 3% to 10%. Malassezia yeast species (previously referred to as Pityrosporum) are thought to be the responsible organisms, and cause inflammation by still poorly defined mechanisms. Seborrhoeic dermatitis tends to relapse after treatment.
+2023-09-21 15:39:23,739 [INFO] 
+2023-09-21 15:39:23,739 [INFO] inflammation
+2023-09-21 15:39:23,739 [INFO] reason
+2023-09-21 15:39:23,740 [INFO] Luigi Naldi
+2023-09-21 15:39:23,740 [INFO] **************Getting hindex by author*****************
+2023-09-21 15:39:23,740 [INFO] Getting https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Luigi%20Naldi
+2023-09-21 15:39:25,170 [DEBUG] close.started
+2023-09-21 15:39:25,171 [DEBUG] close.complete
+2023-09-21 15:39:25,171 [DEBUG] connect_tcp.started host='scholar.google.com' port=443 local_address=None timeout=5 socket_options=None
+2023-09-21 15:39:25,174 [DEBUG] connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f658e1291b0>
+2023-09-21 15:39:25,174 [DEBUG] start_tls.started ssl_context=<ssl.SSLContext object at 0x7f658dea2240> server_hostname='scholar.google.com' timeout=5
+2023-09-21 15:39:25,335 [DEBUG] start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f658e1291e0>
+2023-09-21 15:39:25,336 [DEBUG] send_request_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:25,336 [DEBUG] send_request_headers.complete
+2023-09-21 15:39:25,336 [DEBUG] send_request_body.started request=<Request [b'GET']>
+2023-09-21 15:39:25,336 [DEBUG] send_request_body.complete
+2023-09-21 15:39:25,336 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:26,630 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:39:25 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2023-09-21 15:39:26,631 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Luigi%20Naldi "HTTP/1.1 200 OK"
+2023-09-21 15:39:26,631 [DEBUG] receive_response_body.started request=<Request [b'GET']>
+2023-09-21 15:39:26,713 [DEBUG] receive_response_body.complete
+2023-09-21 15:39:26,714 [DEBUG] response_closed.started
+2023-09-21 15:39:26,714 [DEBUG] response_closed.complete
+2023-09-21 15:39:26,714 [DEBUG] Session proxy config is {}
+2023-09-21 15:39:26,718 [INFO] Found 1 authors
+2023-09-21 15:39:26,719 [INFO] Getting https://scholar.google.com/citations?hl=en&user=r-8KKnQAAAAJ&pagesize=100
+2023-09-21 15:39:28,504 [DEBUG] send_request_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:28,504 [DEBUG] send_request_headers.complete
+2023-09-21 15:39:28,504 [DEBUG] send_request_body.started request=<Request [b'GET']>
+2023-09-21 15:39:28,505 [DEBUG] send_request_body.complete
+2023-09-21 15:39:28,505 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:28,859 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:39:28 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2023-09-21 15:39:28,860 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&user=r-8KKnQAAAAJ&pagesize=100 "HTTP/1.1 200 OK"
+2023-09-21 15:39:28,860 [DEBUG] receive_response_body.started request=<Request [b'GET']>
+2023-09-21 15:39:29,106 [DEBUG] receive_response_body.complete
+2023-09-21 15:39:29,106 [DEBUG] response_closed.started
+2023-09-21 15:39:29,107 [DEBUG] response_closed.complete
+2023-09-21 15:39:29,107 [DEBUG] Session proxy config is {}
+2023-09-21 15:39:29,150 [INFO] Getting https://scholar.google.com/citations?hl=en&user=r-8KKnQAAAAJ&pagesize=100
+2023-09-21 15:39:31,034 [DEBUG] send_request_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:31,035 [DEBUG] send_request_headers.complete
+2023-09-21 15:39:31,035 [DEBUG] send_request_body.started request=<Request [b'GET']>
+2023-09-21 15:39:31,035 [DEBUG] send_request_body.complete
+2023-09-21 15:39:31,035 [DEBUG] receive_response_headers.started request=<Request [b'GET']>
+2023-09-21 15:39:31,369 [DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 21 Sep 2023 07:39:30 GMT'), (b'Expires', b'Fri, 01 Jan 1990 00:00:00 GMT'), (b'Cache-Control', b'no-cache, must-revalidate'), (b'Pragma', b'no-cache'), (b'Content-Type', b'text/html; charset=UTF-8'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'citations'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2023-09-21 15:39:31,369 [INFO] HTTP Request: GET https://scholar.google.com/citations?hl=en&user=r-8KKnQAAAAJ&pagesize=100 "HTTP/1.1 200 OK"
+2023-09-21 15:39:31,370 [DEBUG] receive_response_body.started request=<Request [b'GET']>
+2023-09-21 15:39:31,623 [DEBUG] receive_response_body.complete
+2023-09-21 15:39:31,624 [DEBUG] response_closed.started
+2023-09-21 15:39:31,624 [DEBUG] response_closed.complete
+2023-09-21 15:39:31,624 [DEBUG] Session proxy config is {}
+2023-09-21 15:39:31,664 [INFO] 92
+2023-09-21 15:39:34,668 [INFO] 92
+2023-09-21 15:39:34,668 [INFO] 
+2023-09-21 15:39:34,685 [INFO] *******************Success*****************
