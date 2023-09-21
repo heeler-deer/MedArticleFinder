@@ -1,3 +1,8 @@
+
+
+
+
+
 import pandas as pd
 import glob
 import requests
@@ -12,7 +17,6 @@ import re
 import random
 import logging
 import colorlog
-
 
 
 logger = colorlog.getLogger()
@@ -84,21 +88,20 @@ class ArticleInfo:
         self.abstract = abstract
         self.keywords = keywords
         self.source_url = source_url
-        self.doi=doi
+        self.doi = doi
         self.document_url = document_url
         self.category = category
         self.matching_keywords = matching_keywords
         self.hindex = hindex
         self.cohindex = "N"
-        
 
 
 def get_IF_from_name(name):
-    
+
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.22 Safari/537.36 SE 2.X MetaSr 1.0"
     }
-    name.replace(" ", "+")  
+    name.replace(" ", "+")
     address = (
         "http://sci.justscience.cn/list?q="
         + str(name)
@@ -106,11 +109,10 @@ def get_IF_from_name(name):
         + "&research_area=&If_range_min=&If_range_max=&jcr_quartile=0&oa=2&Self_cites_ratio_min=&Self_cites_ratio_max=&mainclass=0&subclass=0&pub_country=&not_pub_country=&sci_type=2&pub_frequency=7&adv=1"
     )
     logger.info(address)
-    f = requests.get(address, headers=headers, timeout=(3, 7))  
+    f = requests.get(address, headers=headers, timeout=(3, 7))
 
     parsed_html = html.fromstring(f.content)
 
-    
     tr_elements = parsed_html.xpath(
         "/html/body/div[1]/div[1]/div[2]/div[2]/table/tbody/tr"
     )
@@ -120,8 +122,12 @@ def get_IF_from_name(name):
         
         row_data = tr.xpath("td[1]/a/text()")
         row_data2 = tr.xpath("td[2]/text()")
-        row_data = str(row_data[0])
-        row_data2 = str(row_data2[0])
+        try:
+            row_data = str(row_data[0])
+            row_data2 = str(row_data2[0])
+        except Exception as e:
+            return "N"
+
         logger.info(row_data.strip().upper())
 
         logger.info(name.strip().upper())
@@ -139,6 +145,7 @@ def get_article_by_keyword(key, key2):
     pmid_result_list = []
 
     key_year = [2013]
+    # https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&amp;term=shampoo+AND+zinc+AND+
     # https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=science%5bjournal%5d+AND+breast+cancer+AND+2008
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.22 Safari/537.36 SE 2.X MetaSr 1.0"
@@ -146,11 +153,13 @@ def get_article_by_keyword(key, key2):
     logger.info("************Getting pmid of article*****************")
     for key3 in key_year:
         address = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmax=20&term=%5bjournal%5d+AND+"
-        address = address + key + "+" + key2 + "+AND+" + str(key3)
+        # address = address + key + "+" + key2 + "+AND+" + str(key3)
+        address = address + key + "+" + key2 + "+AND+" + \
+            "(%222012/01/01%22[Date%20-%20Publication]%20:%20%222023/12/31%22[Date%20-%20Publication])"
         logger.info(address)
         f = requests.get(address, headers=headers, timeout=(3, 7))
         soup = BeautifulSoup(f.text, features="xml")
-        
+
         count = soup.find("Count").text
         logger.info("|  Count  |  key1  |  key2  |  key3  |")
         logger.info(
@@ -174,16 +183,15 @@ def get_article_by_keyword(key, key2):
                 + str(key3)
             )
             return ["error"]
-        
+
         id_list = soup.find_all("Id")
         for id_element in id_list:
-            logger.info("Id:"+ id_element.text)
-            
+            logger.info("Id:" + id_element.text)
+
             pmid_result_list.append(id_element.text)
-        logger.info("%s",pmid_result_list)
-        
+        logger.info("%s", pmid_result_list)
+
         time.sleep(1.5)
-        
 
     return pmid_result_list
 
@@ -209,24 +217,24 @@ def get_details_by_pmid(pmid_list, key, key2):
     soup = json.loads(response)
 
     for item in soup["data"]:
-        logger.info("PMID:"+ str(item["pmid"]))
-        
-        logger.info("Year:"+ str(item["year"]))
-        logger.info("Title:"+ item["title"])
-        logger.info("Authors:"+ item["authors"])
-        logger.info("Journal:"+ item["journal"])
-        logger.info("Relative Citation Ratio:"+
+        logger.info("PMID:" + str(item["pmid"]))
+
+        logger.info("Year:" + str(item["year"]))
+        logger.info("Title:" + item["title"])
+        logger.info("Authors:" + item["authors"])
+        logger.info("Journal:" + item["journal"])
+        logger.info("Relative Citation Ratio:" +
                     str(item["relative_citation_ratio"]))
-        logger.info("NIH Percentile:"+ str(item["nih_percentile"]))
-        logger.info("Citation Count:" +str(item["citation_count"]))
-        logger.info("Field Citation Rate:"+ str(item["field_citation_rate"]))
+        logger.info("NIH Percentile:" + str(item["nih_percentile"]))
+        logger.info("Citation Count:" + str(item["citation_count"]))
+        logger.info("Field Citation Rate:" + str(item["field_citation_rate"]))
         logger.info("DOI:"+str(item["doi"]))
         # build IF,source_url,abstract,keywords,document_url
 
         IF = get_IF_from_name(item["journal"])
         if IF == None:
             IF = "N"
-        logger.info("Impact Factor:"+ IF)
+        logger.info("Impact Factor:" + IF)
         source_url = "https://pubmed.ncbi.nlm.nih.gov/" + \
             str(item["pmid"]) + "/"
 
@@ -264,10 +272,10 @@ def get_details_by_pmid(pmid_list, key, key2):
         hindex = get_hindex_by_author(item["authors"].split(",")[0])
 
         logger.info(hindex)
-        if item["doi"]=="":
-            document_url=""
+        if item["doi"] == "":
+            document_url = ""
         else:
-            document_url="https://sci-hub.se/"+item["doi"]
+            document_url = "https://sci-hub.se/"+item["doi"]
         logger.info(document_url)
         article_info = ArticleInfo(
             item["pmid"],
@@ -291,8 +299,7 @@ def get_details_by_pmid(pmid_list, key, key2):
         )
 
         article_info_list.append(article_info)
-    
-    
+
     data = []
     for article_info in article_info_list:
 
@@ -343,10 +350,9 @@ def get_details_by_pmid(pmid_list, key, key2):
             "Matching Key Words",
         ],
     )
-    
+
     csv_filename = "article_info.csv"
 
-    
     df.to_csv(csv_filename, index=False)
     logger.info("*******************Success*****************")
     return
@@ -383,9 +389,9 @@ def get_abstract_keywords_by_pmid(pmid):
     else:
         logger.info(keyword_list)
         for keyword in keyword_list.find_all("Keyword"):
-            
+
             keyword_text = keyword.text
-            
+
             keywords.append(keyword_text)
 
     keywords_string = ",".join(keywords)
@@ -415,18 +421,25 @@ def get_hindex_by_author(name):
         return hindex
 
 
-
 def main():
-    key_list = ["inflammation"]
-    key_second_list = ["shampoo"]
+    key_list = ["dandruff", "sebum", "Seborrheic Dermatitis", "inflammation",
+                "fungi", "Malassezia", "microbes", "greasy", "greasiness",
+                "flaking", "itch", "dry", "oily", "zinc", "ZPT",
+                "octopirox", "climbazole", "Ketoconazole"]
+    key_second_list = ["shampoo","hair conditioner","scalp cleanser"]
     for key in key_list:
+        key_pmid_list=["placeholder"]
         for key2 in key_second_list:
-
+            
             pmid_list = get_article_by_keyword(key, key2)
+            if key_pmid_list is not None and pmid_list is not None:
+                pmid_list=[x for x in pmid_list if x not in key_pmid_list]
+            
             if pmid_list[0] == "error":
                 logger.error("error")
                 continue
             else:
+                key_pmid_list=key_pmid_list.append(pmid_list)
                 get_details_by_pmid(pmid_list=pmid_list, key=key, key2=key2)
 
 

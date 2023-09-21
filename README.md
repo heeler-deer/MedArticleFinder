@@ -30,6 +30,7 @@ IF
 h-index
 ```
 
+After we get details, we can easily convert data to csv files.
 
 
 
@@ -38,8 +39,8 @@ It's easily to modiy the keywords in function `main()`:
 
 
 ```python
-    key_list = ["inflammation"]
-    key_second_list = ["shampoo"]
+key_list = ["inflammation"]
+key_second_list = ["shampoo"]
 ```
 
 
