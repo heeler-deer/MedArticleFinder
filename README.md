@@ -53,3 +53,9 @@ key_year = [2013]
 ```
 
 
+or you can just send params like that:
+
+
+```shell
+https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?term=%5bjournal%5d+AND+Seborrheic%20Dermatitis+shampoo+AND+(%222012/01/01%22[Date%20-%20Publication]%20:%20%222023/12/31%22[Date%20-%20Publication])
+```
