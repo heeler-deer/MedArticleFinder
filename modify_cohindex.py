@@ -19,7 +19,7 @@ import re
 import random
 import logging
 import colorlog
-
+import os
 
 root_logger = logging.getLogger()
 if root_logger.handlers:
@@ -49,7 +49,7 @@ formatter = colorlog.ColoredFormatter(
 console_handler.setFormatter(formatter)
 
 
-file_handler = logging.FileHandler('download_article.log', mode='w')
+file_handler = logging.FileHandler('modify_cohindex.log', mode='w')
 file_formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
 file_handler.setFormatter(file_formatter)
 
@@ -57,42 +57,52 @@ file_handler.setFormatter(file_formatter)
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
 
-def download_paper(url,title):
-    sh = SciHub()
-    logger.info("**********Getting paper by scihub url**********")
-    # exactly the same thing as fetch except downloads the articles to disk
-    # if no path given, a unique name will be used as the file name
-    try:
-        logger.info(title)
-        logger.info(url)
-        result = sh.download(url, path='./paper/'+title+".pdf")
-        logger.info("***************************")
-        logger.info("**********Success**********")
-        logger.info("***************************")
-        return "Y"
-    except Exception as e:
-        logger.error("**********Can't find url**********")
-        return ""
 
 
 
 
 
+directory = "./paper/"
 
 
+filelist = os.listdir(directory)
+
+
+file_names = []
+
+
+for filename in filelist:
+    
+    name, ext = os.path.splitext(filename)
+    
+    file_names.append(name)
+
+
+
+
+
+logger.info(file_names)
 
 
 df = pd.read_excel('article_info 664.xlsx')
+cnt=0
+cnt2=0
 for  index, row in df.iterrows():
-    url=row['Document_url']
+    
     title=row['Title']
-    logger.info(url)
+    
     logger.info(title)
-    result=download_paper(url,title)
-    time.sleep(3)
+    
+    if (title in file_names):
+        result="Y"
+        cnt=cnt+1
+    else:
+        result=""
+        cnt2=cnt2+1
     logger.info(result)
+    
     df.at[index, 'co-hindex'] = result
-    
-df.to_excel('article_info 664.xlsx', index=False)
 
-    
+logger.info(cnt)
+logger.info(cnt2)
+df.to_excel('article_info 664.xlsx', index=False)
