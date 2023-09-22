@@ -156,7 +156,7 @@ def get_article_by_keyword(key, key2):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.22 Safari/537.36 SE 2.X MetaSr 1.0"
     }
-    logger.info("************Getting pmid of article*****************")
+    logger.info("**********Getting pmid of article**********")
     for key3 in key_year:
         address = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmax=2000&term=%5bjournal%5d+AND+"
         # address = address + key + "+" + key2 + "+AND+" + str(key3)
@@ -211,7 +211,7 @@ def get_details_by_pmid(pmid_list, key, key2):
 
         return
     # https://icite.od.nih.gov/api/pubs?pmids=28968381,28324054,23843509&fl=pmid,year,title,apt,relative_citation_ratio,cited_by_clin
-    logger.info("************Getting details by pmid******************")
+    logger.info("**********Getting details by pmid**********")
     address = (
         "https://icite.od.nih.gov/api/pubs?pmids="
         + ",".join(pmid_list)
@@ -360,7 +360,9 @@ def get_details_by_pmid(pmid_list, key, key2):
     csv_filename = "article_info.csv"
     #df.to_csv(csv_filename, mode='a', header=False, index=False)
     df.to_csv(csv_filename, mode='w', header=True, index=False)
-    logger.info("*******************Success*****************")
+    logger.info("***************************")
+    logger.info("**********Success**********")
+    logger.info("***************************")
     return
 
 
@@ -368,7 +370,7 @@ def get_abstract_keywords_by_pmid(pmid):
     abstract = ""
     keywords_string = ""
     keywords = []
-    logger.info("*********Getting abstract and keywords********")
+    logger.info("**********Getting abstract and keywords**********")
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.22 Safari/537.36 SE 2.X MetaSr 1.0"
     }
@@ -407,7 +409,7 @@ def get_abstract_keywords_by_pmid(pmid):
 
 def get_hindex_by_author(name):
     return "N"
-    logger.info("**************Getting hindex by author*****************")
+    logger.info("**********Getting hindex by author**********")
     try:
         search_query = scholarly.search_author(name)
 
@@ -416,14 +418,14 @@ def get_hindex_by_author(name):
         scholarly.pprint(scholarly.fill(author, sections=["indices"]))
         hindex = scholarly.fill(author, sections=["indices"])["hindex"]
         if hindex == None:
-            logger.error("**********No hindex as hindex==None*******")
+            logger.error("**********No hindex as hindex==None**********")
             hindex = "N"
         logger.info(hindex)
         random_integer = random.randint(2, 4)
         time.sleep(random_integer)
         return hindex
     except Exception as e:
-        logger.error("**********No hindex as got exception*******")
+        logger.error("**********No hindex as got exception**********")
         hindex = "N"
         return hindex
 

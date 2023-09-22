@@ -65,7 +65,7 @@ article_info_list = []
 def get_hindex_by_author(name):
     name=name.split(",")[0]
     
-    logger.info("**************Getting hindex by author*****************")
+    logger.info("**********Getting hindex by author**********")
     logger.info(name)
     try:
         search_query = scholarly.search_author(name)
@@ -75,14 +75,14 @@ def get_hindex_by_author(name):
         scholarly.pprint(scholarly.fill(author, sections=["indices"]))
         hindex = scholarly.fill(author, sections=["indices"])["hindex"]
         if hindex == None:
-            logger.error("**********No hindex as hindex==None*******")
+            logger.error("**********No hindex as hindex==None**********")
             hindex = "N"
         logger.info(hindex)
         random_integer = random.randint(2, 4)
         time.sleep(random_integer)
         return hindex
     except Exception as e:
-        logger.error("**********No hindex as got exception*******")
+        logger.error("**********No hindex as got exception**********")
         hindex = "N"
         return hindex
 

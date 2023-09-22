@@ -59,19 +59,19 @@ logger.addHandler(file_handler)
 
 def download_paper(url,title):
     sh = SciHub()
-    logger.info("*****************Getting paper by scihub url**********")
+    logger.info("**********Getting paper by scihub url**********")
     # exactly the same thing as fetch except downloads the articles to disk
     # if no path given, a unique name will be used as the file name
     try:
         logger.info(title)
         logger.info(url)
         result = sh.download(url, path='./paper/'+title+".pdf")
-        logger.info("**************************")
-        logger.info("**********Success*********")
-        logger.info("**************************")
+        logger.info("***************************")
+        logger.info("**********Success**********")
+        logger.info("***************************")
         return "Y"
     except Exception as e:
-        logger.error("Can't find url")
+        logger.error("**********Can't find url**********")
         return ""
 
 
