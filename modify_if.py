@@ -101,6 +101,7 @@ def get_IF_from_name(name):
 
             return tr.xpath("td[7]/text()")[0]
         except Exception as e:
+            logger.error("**********Error**********")
             return "N"
         
 df = pd.read_excel('article_info 664.xlsx')
