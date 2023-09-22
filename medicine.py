@@ -441,7 +441,7 @@ def main():
                 continue
             if key_pmid_list is not None and pmid_list is not None:
                 pmid_list=[x for x in pmid_list if x not in key_pmid_list]
-                key_pmid_list=key_pmid_list.append(pmid_list)
+                key_pmid_list=key_pmid_list.extend(pmid_list)
                 get_details_by_pmid(pmid_list=pmid_list, key=key, key2=key2)
 
 
