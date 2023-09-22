@@ -1,7 +1,8 @@
-
-
-
-
+'''
+# @author: heeler-deer
+# @date: 2023-09-21
+# @file: medicine.py
+'''
 
 import pandas as pd
 import glob
@@ -135,7 +136,7 @@ def get_IF_from_name(name):
             row_data.strip().upper() == name.strip().upper()
             or row_data2.strip().upper() == name.strip().upper()
         ):
-            time.sleep(1)
+            time.sleep(3)
             logger.info(tr.xpath("td[7]/text()")[0])
 
             return tr.xpath("td[7]/text()")[0]
@@ -152,7 +153,7 @@ def get_article_by_keyword(key, key2):
     }
     logger.info("************Getting pmid of article*****************")
     for key3 in key_year:
-        address = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmax=20&term=%5bjournal%5d+AND+"
+        address = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmax=2000&term=%5bjournal%5d+AND+"
         # address = address + key + "+" + key2 + "+AND+" + str(key3)
         address = address + key + "+" + key2 + "+AND+" + \
             "(%222012/01/01%22[Date%20-%20Publication]%20:%20%222023/12/31%22[Date%20-%20Publication])"
@@ -191,7 +192,7 @@ def get_article_by_keyword(key, key2):
             pmid_result_list.append(id_element.text)
         logger.info("%s", pmid_result_list)
 
-        time.sleep(1.5)
+        time.sleep(3)
 
     return pmid_result_list
 
@@ -352,8 +353,8 @@ def get_details_by_pmid(pmid_list, key, key2):
     )
 
     csv_filename = "article_info.csv"
-
-    df.to_csv(csv_filename, index=False)
+    #df.to_csv(csv_filename, mode='a', header=False, index=False)
+    df.to_csv(csv_filename, mode='w', header=True, index=False)
     logger.info("*******************Success*****************")
     return
 
@@ -376,11 +377,11 @@ def get_abstract_keywords_by_pmid(pmid):
     logger.info(address)
     f = requests.get(address, headers=headers, timeout=(3, 7))
     soup = BeautifulSoup(f.text, features="xml")
-    raw_abstract = soup.find("AbstractText").text
+    raw_abstract = soup.find("AbstractText")
     if raw_abstract == None:
         abstract = ""
     else:
-        abstract = re.sub(r"<.*?>", "", raw_abstract)
+        abstract = re.sub(r"<.*?>", "", raw_abstract.text)
     logger.info(abstract)
 
     keyword_list = soup.find("KeywordList")
@@ -400,6 +401,7 @@ def get_abstract_keywords_by_pmid(pmid):
 
 
 def get_hindex_by_author(name):
+    return "N"
     logger.info("**************Getting hindex by author*****************")
     try:
         search_query = scholarly.search_author(name)
@@ -432,13 +434,13 @@ def main():
         for key2 in key_second_list:
             
             pmid_list = get_article_by_keyword(key, key2)
+            if pmid_list[0] == "error" or key_pmid_list is None or pmid_list is  None:
+                logger.error("error")
+                logger.error(key_pmid_list)
+                logger.error(pmid_list)
+                continue
             if key_pmid_list is not None and pmid_list is not None:
                 pmid_list=[x for x in pmid_list if x not in key_pmid_list]
-            
-            if pmid_list[0] == "error":
-                logger.error("error")
-                continue
-            else:
                 key_pmid_list=key_pmid_list.append(pmid_list)
                 get_details_by_pmid(pmid_list=pmid_list, key=key, key2=key2)
 
