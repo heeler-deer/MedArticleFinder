@@ -19,6 +19,11 @@ import random
 import logging
 import colorlog
 
+root_logger = logging.getLogger()
+if root_logger.handlers:
+    for handler in root_logger.handlers:
+        root_logger.removeHandler(handler)
+        
 
 logger = colorlog.getLogger()
 logger.setLevel(logging.DEBUG)
