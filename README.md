@@ -2,6 +2,13 @@
 
 
 
+
+
+
+
+## search articles
+
+
 A simple script to search for articles about *medicine* by keywords and years.
 
 
@@ -59,3 +66,43 @@ or you can just send params like that:
 ```shell
 https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?term=%5bjournal%5d+AND+Seborrheic%20Dermatitis+shampoo+AND+(%222012/01/01%22[Date%20-%20Publication]%20:%20%222023/12/31%22[Date%20-%20Publication])
 ```
+
+
+
+
+
+## download articls
+
+
+
+By using [scihub.py](https://github.com/zaytoun/scihub.py), we can easily download paper by building their sci-hub url:
+
+
+```
+https://sci-hub.se/+doi
+```
+
+
+then we just use scihub.py in `download_article.py`:
+
+
+```python
+def download_paper(url,title):
+    sh = SciHub()
+    logger.info("*****************Getting paper by scihub url**********")
+    # exactly the same thing as fetch except downloads the articles to disk
+    # if no path given, a unique name will be used as the file name
+    try:
+        logger.info(title)
+        logger.info(url)
+        result = sh.download(url, path='./paper/'+title+".pdf")
+        logger.info("**************************")
+        logger.info("**********Success*********")
+        logger.info("**************************")
+        return "Y"
+    except Exception as e:
+        logger.error("Can't find url")
+        return ""
+```
+
+After several seconds, we can get the pdf version of the paper.
