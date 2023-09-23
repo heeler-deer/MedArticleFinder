@@ -1,4 +1,4 @@
-# MedArticleFetcher
+# MedArticleFinder
 
 
 
@@ -36,6 +36,11 @@ Journal
 IF
 h-index
 ```
+
+**NOTE!!!!!!**
+While there may be duplicate names, it's important to note that the code cannot guarantee the absolute reliability of the h-index.
+
+
 
 After we get details, we can easily convert data to csv files.
 

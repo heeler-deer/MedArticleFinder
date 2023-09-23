@@ -4,6 +4,16 @@
 # @file: medicine.py
 '''
 
+
+'''
+find h-index by name of the author
+NOTE!!!!!!
+While there may be duplicate names, 
+it's important to note that the code cannot guarantee 
+the absolute reliability of the h-index.
+'''
+
+
 import json
 import logging
 import random
