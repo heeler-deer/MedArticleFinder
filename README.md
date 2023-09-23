@@ -6,10 +6,10 @@
 
 
 
-## search articles
+## Search articles about medicine
 
 
-A simple script to search for articles about *medicine* by keywords and years.
+A simple script to search for articles about **medicine** by keywords and years.
 
 
 
@@ -71,7 +71,7 @@ https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?term=%5bjournal%5d+AN
 
 
 
-## download articls
+## Download articles
 
 
 

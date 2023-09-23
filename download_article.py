@@ -4,22 +4,24 @@
 # @file: medicine.py
 '''
 
-from scihub import SciHub
-import pandas as pd
-import glob
-import requests
-import time
-from bs4 import BeautifulSoup
-from pygtrans import Translate
-import time
-import json
-from lxml import html
-from scholarly import scholarly
-import re
-import random
-import logging
-import colorlog
 
+import json
+import logging
+import random
+import time
+import glob
+import re
+
+import requests
+from bs4 import BeautifulSoup
+from lxml import html
+import colorlog
+import pandas as pd
+from pygtrans import Translate
+from scholarly import scholarly
+
+
+from scihub import SciHub
 
 root_logger = logging.getLogger()
 if root_logger.handlers:
