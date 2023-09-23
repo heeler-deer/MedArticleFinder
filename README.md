@@ -75,7 +75,7 @@ https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?term=%5bjournal%5d+AN
 
 
 
-By using [scihub.py](https://github.com/zaytoun/scihub.py), we can easily download paper by building their sci-hub url:
+By using [scihub.py](https://github.com/zaytoun/scihub.py), we can easily download papers by building their sci-hub url:
 
 
 ```
